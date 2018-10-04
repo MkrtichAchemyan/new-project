@@ -3,11 +3,13 @@ import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 
 @Injectable()
-export class AuthGuard implements CanActivate{
+export class BusinesGuardService implements CanActivate{
   constructor(private router: Router){}
   canActivate(): boolean {
-    if (!localStorage.getItem("Authorization")) {
-      this.router.navigate(['http://localhost:3000/login']);
+    let token = localStorage.getItem('Authorization')
+    let role = localStorage.getItem('role')
+    if (!token && role!=="Busines") {
+      this.router.navigate(['/']);
       return false;
     }
     return true;

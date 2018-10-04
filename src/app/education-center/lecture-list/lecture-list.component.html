@@ -1,0 +1,128 @@
+<!--add student modal-->
+<ng-template #addLecturetModal let-close="close" let-dismiss="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Lecture</h4>
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username" [(ngModel)]="username">
+      <span class="err">{{errorUsernameSpan}}</span>
+    </div>
+    <div class="form-group">
+      <input type="text" [required]="" name="name" placeholder="Name..." class="form-name form-control" id="form-name" [(ngModel)]="name">
+      <span class="err">{{errorFirstnameSpan}}</span>
+    </div>
+    <div class="form-group">
+      <input type="text" name="lastname" placeholder="Lastname..." class="form-lastname form-control" id="form-lastname" [(ngModel)]="lastname">
+      <span class="err">{{errorLastnameSpan}}</span>
+    </div>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="form-email" [(ngModel)]="email">
+      <span class="err">{{errorEmailSpan}}</span>
+    </div>
+    <div class="form-group">
+      <select name="facultet" id="form-facultet" class="form-facultet form-control" (change)="facultetValue($event.target.value)">
+        <option disabled>Facultet</option>
+        <option value="{{facultet}}" *ngFor="let facultet of facultetList" >{{facultet}}</option>
+      </select>
+      <span class="err">{{errorFacultetSpan}}</span>
+    </div>
+    <div class="form-group">
+      <select name="branch" id="form-branch" class="form-branch form-control" (change)="branchValue($event.target.value)">
+        <option disabled>Branch</option>
+        <option value="{{branch}}" *ngFor="let branch of branchList" >{{branch}}</option>
+      </select>
+      <span class="err">{{errorBranchSpan}}</span>
+    </div>
+    <div class="form-group">
+      <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone" [(ngModel)]="phone">
+      <span class="err">{{errorPhoneSpan}}</span>
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password" [(ngModel)]="password">
+      <span class="err">{{errorPasswordSpan}}</span>
+    </div>
+    <div class="form-group">
+      <input type="password" name="confirm_password" placeholder="Confirm password..." class="form-confirm_password form-control" id="form-confirm_password" [(ngModel)]="confirm_password">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="save(name,lastname,email,username,password,confirm_password,phone,close)">Registration</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-sm btn-info m-2" (click)="openA(addLecturetModal)" style="float: right">+ Add Lecture</button>
+
+
+<!--student list table-->
+
+
+<table class="table table-striped" style="color: white">
+  <thead>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Role</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let lecture of lectureLIst; let ind = index">
+    <td>{{lecture.first_name}}</td>
+    <td>{{lecture.last_name}}</td>
+    <td>{{lecture.email}}</td>
+    <td>{{lecture.phone}}</td>
+    <td>{{lecture.role}}</td>
+    <td style="color: green; cursor: pointer">
+      <button class="btn btn-success btn-sm" (click)="openU(updateLecturetModal,ind)">
+        <i class="far fa-edit" ></i>
+      </button>
+    </td>
+    <td style="color: red; cursor: pointer">
+      <button class="btn btn-danger btn-sm" (click)="deleteUser(ind)">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!--update student modal-->
+
+<ng-template #updateLecturetModal let-close="close" let-dismiss="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Lecture</h4>
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <input type="hidden" name="name" placeholder="Name..." class="form-name form-control" id="form-idU" [(ngModel)]="idU">
+    <div class="form-group">
+      <label class="sr-only" for="form-name">Name</label>
+      <input type="text" name="name" placeholder="Name..." class="form-name form-control" id="form-nameU" [(ngModel)]="nameU">
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="form-lastname">Lastname</label>
+      <input type="text" name="lastname" placeholder="Lastname..." class="form-lastname form-control" id="form-lastnameU" [(ngModel)]="lastnameU">
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="form-email">Email</label>
+      <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="form-emailU" [(ngModel)]="emailU">
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="form-phone">Phone</label>
+      <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phoneU" [(ngModel)]="phoneU">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="update(nameU,lastnameU,emailU,phoneU,close)">Update</button>
+  </div>
+</ng-template>
+

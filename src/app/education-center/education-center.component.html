@@ -1,0 +1,50 @@
+
+<div class="contrainer-fluid app-colege" #colstudent>
+  <nav class="main-menu">
+    <ul>
+      <li>
+        <a class="ml-2">
+          <img src="../../assets/images/user-image-png.png" style="width:40px; cursor: pointer; border-radius: 50%; margin-right: 10px">
+          <span class="nav-text">{{first_name}}</span>
+          <span class="nav-text">{{last_name}}</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="getDashboard()">
+          <i class="fa fa-home fa-2x"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+      </li>
+      <li class="has-subnav">
+        <a (click)="getStudents()">
+          <i class="fa fa-user-graduate fa-2x"></i>
+          <span class="nav-text">Students</span>
+        </a>
+      </li>
+      <li class="has-subnav">
+        <a (click)="getLectures()">
+          <i class="fa fa-chalkboard-teacher fa-2x"></i>
+          <span class="nav-text">Lectures</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="logout">
+      <li>
+        <a (click)="logout()">
+          <i class="fa fa-power-off fa-2x"></i>
+          <span class="nav-text">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="top-content">
+    <div class="inner-bg p-0">
+      <!--Person lists-->
+      <div class="container">
+        <h1>{{education_center_name}}</h1>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+

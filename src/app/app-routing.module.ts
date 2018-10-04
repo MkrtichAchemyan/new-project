@@ -1,18 +1,32 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {ColegeComponent} from "./colege/colege.component";
+import {EducationCenterComponent} from "./education-center/education-center.component";
 import {BusinessComponent} from "./business/business.component";
-import {StudentsComponent} from "./students/students.component";
-import {AuthGuard} from "./auth-guard.service";
+import {LoginComponent} from './login/login.component';
+import {EducationCenterGuardService} from './education-center-guard.service';
+import {BusinesGuardService} from './busines-guard.service';
+import {StudentListComponent} from './education-center/student-list/student-list.component';
+import {DashboardComponent} from './education-center/dashboard/dashboard.component';
+import {LectureListComponent} from './education-center/lecture-list/lecture-list.component';
 
 const appRouts: Routes = [
-  {path: "colege", component: ColegeComponent, canActivate: [AuthGuard]},
-  {path: "business", component: BusinessComponent, canActivate: [AuthGuard]},
-  {path: "students", component: StudentsComponent, canActivate: [AuthGuard]},
+  {path: "", component: LoginComponent},
+  {path: "educationcenter", component: EducationCenterComponent, canActivate: [EducationCenterGuardService],
+  children:[
+    {path: "students", component: StudentListComponent},
+    {path: "lecturers", component: LectureListComponent},
+    {path: "", component: DashboardComponent},
+  ]
+  },
+  {path: "busines", component: BusinessComponent, canActivate: [BusinesGuardService]},
+  {path: "**", redirectTo: "/"}
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRouts)],
+  imports: [
+    RouterModule.forRoot(appRouts),
+    RouterModule.forChild(appRouts)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule{
