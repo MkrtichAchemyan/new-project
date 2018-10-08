@@ -15,8 +15,8 @@ export class StudentListComponent implements OnInit {
   password;
   confirm_password;
   phone;
-  facultet;
-  branch;
+  facultet = "Facultet";
+  branch = "Branch";
   ind;
   idU;
   studentLIst;
@@ -57,6 +57,8 @@ export class StudentListComponent implements OnInit {
     },error => {
       console.log(error)
     })
+    this.branch = "Branch"
+    this.facultet = "Facultet"
   }
   openU(content,ind) {
     this.modalService.open(content);
@@ -69,7 +71,6 @@ export class StudentListComponent implements OnInit {
   }
   ngOnInit() {
     let sessionId = localStorage.getItem('Authorization');
-    let role = localStorage.getItem('role');
     let token = localStorage.getItem('token');
     let person = {
       list_name: 'Student',
@@ -220,8 +221,7 @@ export class StudentListComponent implements OnInit {
         console.log(error)
       })
   }
-  facultetValue(val){
-    this.facultet = val
+  facultetValue(){
     let data = {
       faculties: this.facultet,
       session_id: this.session_id,
@@ -229,13 +229,12 @@ export class StudentListComponent implements OnInit {
     }
     this.postService.getBranch(data).subscribe(data => {
       this.branchList = data
-      console.log(this.branchList)
+      this.branch = "Branch"
     },error => {
       console.log(error)
     })
   }
   branchValue(val){
-    this.branch = val
     console.log(this.branch)
   }
 }

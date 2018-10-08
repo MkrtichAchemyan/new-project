@@ -8,6 +8,7 @@ import {BusinesGuardService} from './busines-guard.service';
 import {StudentListComponent} from './education-center/student-list/student-list.component';
 import {DashboardComponent} from './education-center/dashboard/dashboard.component';
 import {LectureListComponent} from './education-center/lecture-list/lecture-list.component';
+import {GraduationPaperComponent} from './education-center/graduation-paper/graduation-paper.component';
 
 const appRouts: Routes = [
   {path: "", component: LoginComponent},
@@ -15,6 +16,7 @@ const appRouts: Routes = [
   children:[
     {path: "students", component: StudentListComponent},
     {path: "lecturers", component: LectureListComponent},
+    {path: "graduationpaper", component: GraduationPaperComponent},
     {path: "", component: DashboardComponent},
   ]
   },

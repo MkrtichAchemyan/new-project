@@ -23,6 +23,10 @@ url = 'http://192.168.0.128:8000/api/'
     console.log(data)
     return this.http.post(`${this.url}add_user/`, data)
   }
+  addDisertation(data){
+  console.log(data)
+    return this.http.post(`${this.url}add_dissertation/`, data)
+  }
   logOut(data){
     console.log(data)
     return this.http.post(`${this.url}logout/`, data)
@@ -31,12 +35,22 @@ url = 'http://192.168.0.128:8000/api/'
     console.log(data)
     return this.http.post(`${this.url}get_users/`,data)
   }
+  getDisertationList(data){
+    return this.http.post(`${this.url}get_dissertation/`,data)
+  }
   delete_user(data){
     console.log(data)
     return this.http.post(`${this.url}delete_user/`, data)
   }
+  delete_disertation(data){
+    console.log(data)
+    return this.http.post(`${this.url}delete_dissertation/`, data)
+  }
   update_user(data){
     console.log(data)
+    return this.http.put(`${this.url}update_user`,data)
+  }
+  update_disertation(data){
     return this.http.put(`${this.url}update_user`,data)
   }
   getFacultet(data){
@@ -46,5 +60,9 @@ url = 'http://192.168.0.128:8000/api/'
   getBranch(data){
     console.log(data)
     return this.http.post(`${this.url}get_branches/`,data)
+  }
+  getStudentLectures(data){
+    console.log(data)
+    return this.http.post(`${this.url}students_lectures/`,data)
   }
 }

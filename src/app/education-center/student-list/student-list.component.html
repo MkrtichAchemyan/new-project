@@ -37,14 +37,14 @@
       </div>
       <div class="col-6">
         <div class="form-group">
-          <select name="facultet" id="form-facultet" class="form-facultet form-control" (change)="facultetValue($event.target.value)">
+          <select name="facultet" id="form-facultet" class="form-facultet form-control" (change)="facultetValue()" [(ngModel)]="facultet">
             <option disabled>Facultet</option>
             <option value="{{facultet}}" *ngFor="let facultet of facultetList" >{{facultet}}</option>
           </select>
           <span class="err">{{errorFacultetSpan}}</span>
         </div>
         <div class="form-group">
-          <select name="branch" id="form-branch" class="form-branch form-control" (change)="branchValue($event.target.value)">
+          <select name="branch" id="form-branch" class="form-branch form-control" (change)="branchValue()" [(ngModel)]="branch">
             <option disabled>Branch</option>
             <option value="{{branch}}" *ngFor="let branch of branchList" >{{branch}}</option>
           </select>

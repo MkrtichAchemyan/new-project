@@ -18,6 +18,8 @@ import { StudentsComponent } from './students/students.component';
 import { StudentListComponent } from './education-center/student-list/student-list.component';
 import { DashboardComponent } from './education-center/dashboard/dashboard.component';
 import { LectureListComponent } from './education-center/lecture-list/lecture-list.component';
+import { GraduationPaperComponent } from './education-center/graduation-paper/graduation-paper.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { LectureListComponent } from './education-center/lecture-list/lecture-li
     StudentListComponent,
     DashboardComponent,
     LectureListComponent,
+    GraduationPaperComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

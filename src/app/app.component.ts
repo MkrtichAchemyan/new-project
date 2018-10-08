@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
         if (token) {
           switch (role) {
             case 'Rector':
-              if (this.value !== 'students' && this.value !== 'lecturers') {
+              if (this.value !== 'students' && this.value !== 'lecturers'&&this.value !== 'graduationpaper') {
                 console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
                 this.value=""
               }

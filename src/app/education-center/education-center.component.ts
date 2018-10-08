@@ -26,7 +26,7 @@ export class EducationCenterComponent implements OnInit{
     let token = localStorage.getItem('Authorization');
     let user_id = localStorage.getItem('id');
 
-    this.postService.getData({token: token, user_id: user_id}).subscribe(data => {
+    this.postService.getData({session_id: token, user_id: user_id}).subscribe(data => {
       console.log(data);
       localStorage.setItem('token', data['token_api']);
       this.api_token = localStorage.getItem('token');
@@ -66,5 +66,8 @@ export class EducationCenterComponent implements OnInit{
 
   getLectures() {
     this.router.navigate(['educationcenter/', 'lecturers']);
+  }
+  getGraduationPapers(){
+    this.router.navigate(['educationcenter/', 'graduationpaper']);
   }
 }

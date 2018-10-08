@@ -15,8 +15,7 @@ export class LectureListComponent implements OnInit {
   password;
   confirm_password;
   phone;
-  facultet;
-  branch;
+  facultet = "Facultet";
   ind;
   idU;
   lectureLIst;
@@ -94,7 +93,7 @@ export class LectureListComponent implements OnInit {
         phone: phone,
         role: this.roleVal,
         faculties: this.facultet,
-        branch: this.branch,
+        branch: null,
         api_token: this.api_token,
         session_id: this.session_id
       };
@@ -107,11 +106,11 @@ export class LectureListComponent implements OnInit {
         this.lastname ='';
         this.email ='';
         this.username ='';
+
         this.password ='';
         this.confirm_password ='';
         this.phone ='';
         this.facultet= '';
-        this.branch= '';
         close ='';
       }, error => {
         if (error.error.email) {
@@ -186,6 +185,7 @@ export class LectureListComponent implements OnInit {
       this.password ='';
       this.confirm_password ='';
     }
+    this.facultet = "Facultet"
   }
   deleteUser(i){
     let user = {
@@ -220,8 +220,7 @@ export class LectureListComponent implements OnInit {
       console.log(error)
     })
   }
-  facultetValue(val){
-    this.facultet = val
+  facultetValue(){
     let data = {
       faculties: this.facultet,
       session_id: this.session_id,
@@ -233,10 +232,6 @@ export class LectureListComponent implements OnInit {
     },error => {
       console.log(error)
     })
-  }
-  branchValue(val){
-    this.branch = val
-    console.log(this.branch)
   }
 }
 

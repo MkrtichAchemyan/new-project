@@ -6,47 +6,46 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <div class="form-group">
-      <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username" [(ngModel)]="username">
-      <span class="err">{{errorUsernameSpan}}</span>
-    </div>
-    <div class="form-group">
-      <input type="text" [required]="" name="name" placeholder="Name..." class="form-name form-control" id="form-name" [(ngModel)]="name">
-      <span class="err">{{errorFirstnameSpan}}</span>
-    </div>
-    <div class="form-group">
-      <input type="text" name="lastname" placeholder="Lastname..." class="form-lastname form-control" id="form-lastname" [(ngModel)]="lastname">
-      <span class="err">{{errorLastnameSpan}}</span>
-    </div>
-    <div class="form-group">
-      <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="form-email" [(ngModel)]="email">
-      <span class="err">{{errorEmailSpan}}</span>
-    </div>
-    <div class="form-group">
-      <select name="facultet" id="form-facultet" class="form-facultet form-control" (change)="facultetValue($event.target.value)">
-        <option disabled>Facultet</option>
-        <option value="{{facultet}}" *ngFor="let facultet of facultetList" >{{facultet}}</option>
-      </select>
-      <span class="err">{{errorFacultetSpan}}</span>
-    </div>
-    <div class="form-group">
-      <select name="branch" id="form-branch" class="form-branch form-control" (change)="branchValue($event.target.value)">
-        <option disabled>Branch</option>
-        <option value="{{branch}}" *ngFor="let branch of branchList" >{{branch}}</option>
-      </select>
-      <span class="err">{{errorBranchSpan}}</span>
-    </div>
-    <div class="form-group">
-      <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone" [(ngModel)]="phone">
-      <span class="err">{{errorPhoneSpan}}</span>
-    </div>
-    <div class="form-group">
-      <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password" [(ngModel)]="password">
-      <span class="err">{{errorPasswordSpan}}</span>
-    </div>
-    <div class="form-group">
-      <input type="password" name="confirm_password" placeholder="Confirm password..." class="form-confirm_password form-control" id="form-confirm_password" [(ngModel)]="confirm_password">
+  <div class="modal-body col-12">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username" [(ngModel)]="username">
+          <span class="err">{{errorUsernameSpan}}</span>
+        </div>
+        <div class="form-group">
+          <input type="text" [required]="" name="name" placeholder="Name..." class="form-name form-control" id="form-name" [(ngModel)]="name">
+          <span class="err">{{errorFirstnameSpan}}</span>
+        </div>
+        <div class="form-group">
+          <input type="text" name="lastname" placeholder="Lastname..." class="form-lastname form-control" id="form-lastname" [(ngModel)]="lastname">
+          <span class="err">{{errorLastnameSpan}}</span>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Email..." class="form-email form-control" id="form-email" [(ngModel)]="email">
+          <span class="err">{{errorEmailSpan}}</span>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <select name="facultet" id="form-facultet" class="form-facultet form-control" (change)="facultetValue()" [(ngModel)]="facultet">
+            <option disabled>Facultet</option>
+            <option value="{{facultet}}" *ngFor="let facultet of facultetList" >{{facultet}}</option>
+          </select>
+          <span class="err">{{errorFacultetSpan}}</span>
+        </div>
+        <div class="form-group">
+          <input type="text" name="phone" placeholder="Phone..." class="form-phone form-control" id="form-phone" [(ngModel)]="phone">
+          <span class="err">{{errorPhoneSpan}}</span>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password" [(ngModel)]="password">
+          <span class="err">{{errorPasswordSpan}}</span>
+        </div>
+        <div class="form-group">
+          <input type="password" name="confirm_password" placeholder="Confirm password..." class="form-confirm_password form-control" id="form-confirm_password" [(ngModel)]="confirm_password">
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
@@ -60,7 +59,7 @@
 <!--student list table-->
 
 
-<table class="table table-striped" style="color: white">
+<table class="table table-striped table-responsive" style="color: white">
   <thead>
   <tr>
     <th>Firstname</th>
@@ -68,6 +67,7 @@
     <th>Email</th>
     <th>Phone</th>
     <th>Role</th>
+    <th>Facultet</th>
     <th>Update</th>
     <th>Delete</th>
   </tr>
@@ -79,6 +79,7 @@
     <td>{{lecture.email}}</td>
     <td>{{lecture.phone}}</td>
     <td>{{lecture.role}}</td>
+    <td>{{lecture.faculties}}</td>
     <td style="color: green; cursor: pointer">
       <button class="btn btn-success btn-sm" (click)="openU(updateLecturetModal,ind)">
         <i class="far fa-edit" ></i>
